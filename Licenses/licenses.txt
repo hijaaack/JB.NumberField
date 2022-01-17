@@ -1,0 +1,3 @@
+﻿Icons used for the minus and plus buttons are made by fonteawesome.
+License link: https://fontawesome.com/license
+No changes is made to the icon files.

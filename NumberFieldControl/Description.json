@@ -1,0 +1,205 @@
+﻿{
+  "$schema": "../.hmiframework/Schema/ControlDescription.Schema.json",
+  "apiVersion": 1,
+  "name": "NumberFieldControl",
+  "namespace": "TcHmi.Controls.NumberField",
+  "displayName": "NumberField",
+  "version": {
+    "full": "1.0.0.0",
+    "major": 1,
+    "minor": 0,
+    "revision": 0,
+    "build": 0
+  },
+  "visible": true,
+  "themeable": "Standard",
+  "base": "TcHmi.Controls.System.TcHmiControl",
+  "description": "NumberField",
+  "properties": {
+    "containerControl": false,
+    "geometry": {
+      "width": 200,
+      "height": 50
+    }
+  },
+  "template": "Template.html",
+  "icons": [
+    {
+      "name": "Icons/16x16.png",
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "Icons/24x24.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "Icons/32x32.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "Icons/64x64.png",
+      "width": 64,
+      "height": 64
+    }
+  ],
+  "dependencyFiles": [
+    {
+      "name": "NumberFieldControl.js",
+      "type": "JavaScript",
+      "description": "Contains all the main logic."
+    },
+    {
+      "name": "Style.css",
+      "type": "Stylesheet",
+      "description": "Theme independent style"
+    }
+  ],
+  "themes": {
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Style.css",
+          "type": "Stylesheet",
+          "description": "Theme dependent style"
+        }
+      ]
+    }
+  },
+  "attributes": [
+    {
+      "name": "data-tchmi-value",
+      "displayName": "Value",
+      "propertyName": "Value",
+      "propertySetterName": "setValue",
+      "propertyGetterName": "getValue",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Value symbol for the control.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 50,
+      "defaultValueInternal": 50
+    },
+    {
+      "name": "data-tchmi-min",
+      "displayName": "Min",
+      "propertyName": "Min",
+      "propertySetterName": "setMin",
+      "propertyGetterName": "getMin",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Min value limit for the control.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 0,
+      "defaultValueInternal": 0
+    },
+    {
+      "name": "data-tchmi-max",
+      "displayName": "Max",
+      "propertyName": "Max",
+      "propertySetterName": "setMax",
+      "propertyGetterName": "getMax",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Max value limit for the control.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 100,
+      "defaultValueInternal": 100
+    },
+    {
+      "name": "data-tchmi-stepsize",
+      "displayName": "StepSize",
+      "propertyName": "StepSize",
+      "propertySetterName": "setStepSize",
+      "propertyGetterName": "getStepSize",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Step size value for the control.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 1,
+      "defaultValueInternal": 1
+    },
+    {
+      "name": "data-tchmi-unit",
+      "displayName": "Unit",
+      "propertyName": "Unit",
+      "propertySetterName": "setUnit",
+      "propertyGetterName": "getUnit",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "Extended",
+      "description": "Unit for the value field.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": "",
+      "defaultValueInternal": ""
+    },
+    {
+      "name": "data-tchmi-fontsize",
+      "displayName": "FontSize",
+      "propertyName": "FontSize",
+      "propertySetterName": "setFontSize",
+      "propertyGetterName": "getFontSize",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Font size for the value field.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 12,
+      "defaultValueInternal": 12
+    },
+    {
+      "name": "data-tchmi-decimals",
+      "displayName": "Decimals",
+      "propertyName": "Decimlas",
+      "propertySetterName": "setDecimals",
+      "propertyGetterName": "getDecimals",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "Extended",
+      "description": "Decimals for the value field.",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": false,
+      "defaultValue": 0,
+      "defaultValueInternal": 0
+    }
+  ],
+  "attributeCategories": [
+    {
+      "name": "Extended",
+      "displayPriority": 10
+    }
+  ],
+  "functions": [],
+  "events": [],
+  "dataTypes": [
+    {
+      "schema": "Schema/Types.Schema.json"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+﻿/* General theme independed control css. */
+.numberfield-root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.numberfield-value {
+    background: #FFFFFF;
+    /* default box shadow */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    height: 100%;
+    width: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border: 2px solid #aeb9c2;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: RobotoCondensed;
+}
+
+.numberfield-value-p {
+    margin: auto;
+}
+
+    .numberfield-value-p::before {
+        content: attr(data-label);
+    }
+
+.numberfield-minus {
+    /* color gradient for default view */
+    background-image: linear-gradient(135deg, #eff1f3, #aeb9c2);
+    /* default box shadow */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.numberfield-minus-icon {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    background-image: url('Icons/minus-solid.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.numberfield-plus {
+    /* color gradient for default view */
+    background-image: linear-gradient(135deg, #eff1f3, #aeb9c2);
+    /* default box shadow */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border-radius: 0px 4px 4px 0px;
+}
+
+    .numberfield-plus:active, .numberfield-minus:active {
+        background-image: linear-gradient(135deg, #aeb9c2, #eff1f3);
+        box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.3);
+    }
+
+.numberfield-plus-icon {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    background-image: url('Icons/plus-solid.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.numberfield-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.numberfield-plus-icon-test {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

@@ -41,11 +41,7 @@
                     },
                     "themeable": {
                         "type": "string",
-                        "enum": [
-                            "None",
-                            "Standard",
-                            "Advanced"
-                        ],
+                        "enum": ["None", "Standard", "Advanced"],
                         "description": "Determine if the attribute can be changed by a theme. Defaults to standard."
                     },
                     "type": {
@@ -80,12 +76,14 @@
                             },
                             "requiredWaitMode": {
                                 "type": "string",
-                                "enum": [
-                                    "Synchronous",
-                                    "Asynchronous"
-                                ]
+                                "enum": ["Synchronous", "Asynchronous"]
                             }
                         }
+                    },
+                    "allowSymbolExpressionsInObject": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Allows symbol expressions in properties of object or array values."
                     },
                     "category": {
                         "type": "string",
@@ -123,25 +121,16 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "visible",
-                    "type",
-                    "category",
-                    "readOnly",
-                    "bindable",
-                    "heritable"
-                ]
+                "required": ["name", "displayName", "visible", "type", "category", "readOnly", "bindable", "heritable"]
             }
         },
         "virtualRights": {
             "type": "array",
-            "description": "Additional virtual rights for the User Control",
+            "description": "Additional virtual rights for the User Control. For example the 'operate' right of an embedded button can be configured to react on 'canStartPump' right of this User Control.",
             "items": {
                 "$schema": "http://json-schema.org/draft-04/schema",
                 "type": "object",
-                "description": "An access right which is checked by controls. In the Schema a defaultValue of true mean access is granted, false is denied, null is ask parent.",
+                "description": "An access right which is checked by controls. In the schema a defaultValue of true mean access is granted, false is denied, null is ask parent.",
                 "properties": {
                     "name": {
                         "type": "string",
@@ -173,12 +162,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "visible",
-                    "defaultValueInternal"
-                ]
+                "required": ["name", "defaultValueInternal"]
             }
         },
         "description": {
@@ -188,7 +172,5 @@
         }
     },
     "additionalProperties": false,
-    "required": [
-        "parameters"
-    ]
+    "required": ["parameters"]
 }

@@ -27,10 +27,7 @@
                 "title": "Cell definition",
                 "description": "Definition of a cell.",
                 "type": "object",
-                "engineeringColumns": [
-                    "columnIndex",
-                    "rowIndex"
-                ],
+                "engineeringColumns": ["columnIndex", "rowIndex"],
                 "propertiesMeta": [
                     {
                         "name": "columnIndex",
@@ -53,7 +50,7 @@
                         "category": "Layout",
                         "displayPriority": 60,
                         "displayName": "Padding",
-                        "description": "Inner padding of the cell.",
+                        "description": "Inner padding of the cell. \nNote: Percentages always refer to the width of the cell, never its height (even for top and bottom).",
                         "defaultValueInternal": null
                     },
                     {
@@ -185,7 +182,7 @@
                             },
                             {
                                 "title": "Padding",
-                                "description": "Inner padding of the cell.",
+                                "description": "Inner padding of the cell. \nNote: Percentages always refer to the width of the cell, never its height (even for top and bottom).",
                                 "default": null,
                                 "category": "Layout",
                                 "displayPriority": 60
@@ -372,11 +369,7 @@
                 "type": "object",
                 "title": "Column definition",
                 "description": "Defines one column.",
-                "engineeringColumns": [
-                    "width",
-                    "widthUnit",
-                    "widthMode"
-                ],
+                "engineeringColumns": ["width", "widthUnit", "widthMode"],
                 "propertiesMeta": [
                     {
                         "name": "width",
@@ -484,10 +477,7 @@
                         "allOf": [
                             {
                                 "type": "string",
-                                "enum": [
-                                    "Value",
-                                    "Content"
-                                ]
+                                "enum": ["Value", "Content"]
                             },
                             {
                                 "title": "WidthMode",
@@ -576,11 +566,7 @@
         "TcHmi.Controls.System.TcHmiGrid.MeasurementUnitOrFactor": {
             "description": "Defines if the number defines a pixel value (px), percent value (42%) or grow factor (2).\nThe grow factor determines how much the items will grow relative to the rest of the items when positive free space is distributed.",
             "type": "string",
-            "enum": [
-                "factor",
-                "px",
-                "%"
-            ],
+            "enum": ["factor", "px", "%"],
             "default": "factor"
         },
         "TcHmi.Controls.System.TcHmiGrid.RowOptions": {
@@ -590,11 +576,7 @@
                 "type": "object",
                 "title": "Row definition",
                 "description": "Defines one row.",
-                "engineeringColumns": [
-                    "height",
-                    "heightUnit",
-                    "heightMode"
-                ],
+                "engineeringColumns": ["height", "heightUnit", "heightMode"],
                 "propertiesMeta": [
                     {
                         "name": "height",
@@ -702,10 +684,7 @@
                         "allOf": [
                             {
                                 "type": "string",
-                                "enum": [
-                                    "Value",
-                                    "Content"
-                                ]
+                                "enum": ["Value", "Content"]
                             },
                             {
                                 "title": "HeightMode",

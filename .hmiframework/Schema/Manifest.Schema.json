@@ -20,9 +20,7 @@
                         "properties": {
                             "type": {
                                 "type": "string",
-                                "enum": [
-                                    "Package"
-                                ],
+                                "enum": ["Package"],
                                 "description": "Describes a reference to a package."
                             },
                             "nugetId": {
@@ -30,10 +28,7 @@
                                 "description": "This is the NugetId of the referenced package. The resources of the referenced package are used before the rest of the modules."
                             }
                         },
-                        "required": [
-                            "type",
-                            "nugetId"
-                        ],
+                        "required": ["type", "nugetId"],
                         "additionalProperties": false
                     },
                     {
@@ -41,9 +36,7 @@
                         "properties": {
                             "type": {
                                 "type": "string",
-                                "enum": [
-                                    "Control"
-                                ],
+                                "enum": ["Control"],
                                 "description": "Describes a tchmi control."
                             },
                             "basePath": {
@@ -63,10 +56,7 @@
                                 "description": ""
                             }
                         },
-                        "required": [
-                            "type",
-                            "descriptionFile"
-                        ],
+                        "required": ["type", "descriptionFile"],
                         "additionalProperties": false
                     },
                     {
@@ -74,9 +64,7 @@
                         "properties": {
                             "type": {
                                 "type": "string",
-                                "enum": [
-                                    "Function"
-                                ],
+                                "enum": ["Function"],
                                 "description": "Describes a tchmi function."
                             },
                             "basePath": {
@@ -88,10 +76,7 @@
                                 "description": "Name of the description file for the function. This is <functionName>.function.json in most cases."
                             }
                         },
-                        "required": [
-                            "type",
-                            "descriptionFile"
-                        ],
+                        "required": ["type", "descriptionFile"],
                         "additionalProperties": false
                     },
                     {
@@ -99,9 +84,7 @@
                         "properties": {
                             "type": {
                                 "type": "string",
-                                "enum": [
-                                    "Resource"
-                                ],
+                                "enum": ["Resource"],
                                 "description": "Defines we are refering to a resource. This can be a CSS Stylesheet or a JS file."
                             },
                             "path": {
@@ -112,12 +95,14 @@
                                 "type": "string",
                                 "description": "Restricts the CSS Resource to be used only for one specific theme name. Will be used for all themes if unset. (not valid for JS files)",
                                 "minLength": 1
+                            },
+                            "component": {
+                                "type": "string",
+                                "description": "Groups the resource for theme override in project. (not valid for JS files)",
+                                "minLength": 1
                             }
                         },
-                        "required": [
-                            "type",
-                            "path"
-                        ],
+                        "required": ["type", "path"],
                         "additionalProperties": false
                     }
                 ]
@@ -156,9 +141,7 @@
                                                 "type": "string"
                                             }
                                         },
-                                        "requiredProperties": [
-                                            "default"
-                                        ],
+                                        "requiredProperties": ["default"],
                                         "additionalProperties": false
                                     }
                                 ]
@@ -169,6 +152,61 @@
                 }
             },
             "additionalProperties": false
+        },
+        "uiProvider": {
+            "description": "This packages provides some system ui implementation.",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["keyboard"],
+                                "description": "This definition provides a system keyboard implementation."
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Defines the id of this keyboard implementation. Use a namespace string to avoid name collisions."
+                            },
+                            "projectBasedKeyboardFiles": {
+                                "type": "boolean",
+                                "description": "Defines if the keyboard needs a list of keyboards in the project directory (will be stored in tchmiconfig.json)",
+                                "default": false
+                            },
+                            "projectBasedKeyboardFileExt": {
+                                "type": "string",
+                                "description": "Defines the extension of keyboard files in the project.",
+                                "default": ".keyboard.json"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["name", "type", "projectBasedKeyboardFiles"]
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["popup"],
+                                "description": "This definition provides a system popup implementation."
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Defines the id of this popup implementation. Use a namespace string to avoid name collisions.",
+                                "default": "TcHmi.Controls.Beckhoff.TcHmiPopup"
+                            },
+                            "popup": {
+                                "type": "string",
+                                "description": "Defines the type of the popup. TODO: Needed?"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["name", "type"]
+                    }
+                ]
+            }
         }
     },
     "additionalProperties": false

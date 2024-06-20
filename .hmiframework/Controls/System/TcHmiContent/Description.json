@@ -5,11 +5,11 @@
     "namespace": "TcHmi.Controls.System",
     "displayName": "Content",
     "version": {
-        "full": "1.12.752.0",
+        "full": "1.12.760.59",
         "major": 1,
         "minor": 12,
-        "build": 752,
-        "revision": 0
+        "build": 760,
+        "revision": 59
     },
     "visible": false,
     "themeable": "Standard",
@@ -27,21 +27,6 @@
             "name": "Icons/16x16.png",
             "width": 16,
             "height": 16
-        },
-        {
-            "name": "Icons/24x24.png",
-            "width": 24,
-            "height": 24
-        },
-        {
-            "name": "Icons/32x32.png",
-            "width": 32,
-            "height": 32
-        },
-        {
-            "name": "Icons/64x64.png",
-            "width": 64,
-            "height": 64
         }
     ],
     "dependencyFiles": [

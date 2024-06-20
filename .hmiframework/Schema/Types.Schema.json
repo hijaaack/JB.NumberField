@@ -6,32 +6,28 @@
                 "access": {
                     "title": "Access",
                     "type": "object",
-                    "engineeringColumns": [
-                        "accessright",
-                        "group",
-                        "permission"
-                    ],
+                    "engineeringColumns": ["accessright", "group", "permission"],
                     "propertiesMeta": [
                         {
                             "name": "accessright",
                             "displayName": "Access right",
                             "category": "General",
                             "displayPriority": 10,
-                            "description": "Name of the access right."
+                            "description": "Right which this rule defines."
                         },
                         {
                             "name": "group",
                             "displayName": "Group",
                             "category": "General",
                             "displayPriority": 10,
-                            "description": "Name of the user group."
+                            "description": "Group to which this access right is given."
                         },
                         {
                             "name": "permission",
                             "displayName": "Permission",
                             "category": "General",
                             "displayPriority": 10,
-                            "description": "Name of the permission described by this rule."
+                            "description": "Permission for this access rule. \nAllow of one group overrides Deny/Inherit of another group. \nDeny will result in deny if we have no Allow of another group. \nInherit will ask parent control when we got no Allow/Deny. If the parent does not define something there will be a specified default."
                         }
                     ],
                     "properties": {
@@ -45,18 +41,10 @@
                         },
                         "permission": {
                             "type": "string",
-                            "enum": [
-                                "Allow",
-                                "Deny",
-                                "Inherit"
-                            ]
+                            "enum": ["Allow", "Deny", "Inherit"]
                         }
                     },
-                    "required": [
-                        "accessright",
-                        "group",
-                        "permission"
-                    ]
+                    "required": ["accessright", "group", "permission"]
                 }
             },
             "type": "array",
@@ -170,23 +158,13 @@
                     "$ref": "#/definitions/MeasurementUnit"
                 }
             },
-            "required": [
-                "topLeft",
-                "topRight",
-                "bottomRight",
-                "bottomLeft"
-            ]
+            "required": ["topLeft", "topRight", "bottomRight", "bottomLeft"]
         },
         "BorderStyle": {
             "definitions": {
                 "style": {
                     "type": "string",
-                    "enum": [
-                        "Solid",
-                        "Dashed",
-                        "Dotted",
-                        "None"
-                    ],
+                    "enum": ["Solid", "Dashed", "Dotted", "None"],
                     "default": "Solid"
                 }
             },
@@ -205,12 +183,7 @@
                     "$ref": "#/definitions/BorderStyle/definitions/style"
                 }
             },
-            "required": [
-                "left",
-                "top",
-                "right",
-                "bottom"
-            ]
+            "required": ["left", "top", "right", "bottom"]
         },
         "BorderWidth": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -241,12 +214,7 @@
                     "$ref": "#/definitions/PixelUnit"
                 }
             },
-            "required": [
-                "left",
-                "top",
-                "right",
-                "bottom"
-            ]
+            "required": ["left", "top", "right", "bottom"]
         },
         "BoxShadowList": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -457,12 +425,7 @@
                     "description": "Defines the default of this control access right. This will be used if the check for this access right does not return a result. true mean access is granted, false is denied, null is ask parent."
                 }
             },
-            "required": [
-                "name",
-                "displayName",
-                "visible",
-                "defaultValueInternal"
-            ]
+            "required": ["name", "displayName", "visible", "defaultValueInternal"]
         },
         "ControlAccessRightName": {
             "type": "string"
@@ -483,9 +446,7 @@
         "Empty": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
-            "enum": [
-                ""
-            ]
+            "enum": [""]
         },
         "FontFamily": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -493,29 +454,17 @@
         },
         "FontSizeUnit": {
             "type": "string",
-            "enum": [
-                "px",
-                "%"
-            ],
+            "enum": ["px", "%"],
             "default": "px"
         },
         "FontStyle": {
             "type": "string",
-            "enum": [
-                "Normal",
-                "Italic",
-                "Oblique",
-                "Auto"
-            ],
+            "enum": ["Normal", "Italic", "Oblique", "Auto"],
             "default": "Normal"
         },
         "FontWeight": {
             "type": "string",
-            "enum": [
-                "Normal",
-                "Bold",
-                "Auto"
-            ],
+            "enum": ["Normal", "Bold", "Auto"],
             "default": "Normal"
         },
         "Fraction": {
@@ -537,9 +486,7 @@
                                 "objectType": {
                                     "description": "An enum defining the variable type.",
                                     "type": "string",
-                                    "enum": [
-                                        "StaticValue"
-                                    ]
+                                    "enum": ["StaticValue"]
                                 },
                                 "value": {
                                     "anyOf": [
@@ -564,11 +511,7 @@
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "value",
-                                "valueType"
-                            ]
+                            "required": ["objectType", "value", "valueType"]
                         },
                         {
                             "title": "Symbol",
@@ -577,18 +520,13 @@
                                 "objectType": {
                                     "description": "An enum defining the variable type.",
                                     "type": "string",
-                                    "enum": [
-                                        "Symbol"
-                                    ]
+                                    "enum": ["Symbol"]
                                 },
                                 "symbolExpression": {
                                     "$ref": "#/definitions/Function/definitions/symbolExpression"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "symbolExpression"
-                            ]
+                            "required": ["objectType", "symbolExpression"]
                         },
                         {
                             "title": "ControlApiFunction",
@@ -597,9 +535,7 @@
                                 "objectType": {
                                     "description": "An enum defining the variable type.",
                                     "type": "string",
-                                    "enum": [
-                                        "ControlApiFunction"
-                                    ]
+                                    "enum": ["ControlApiFunction"]
                                 },
                                 "control": {
                                     "type": "string"
@@ -611,12 +547,7 @@
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "control",
-                                "fn",
-                                "valueType"
-                            ]
+                            "required": ["objectType", "control", "fn", "valueType"]
                         },
                         {
                             "title": "EventDataObject",
@@ -625,33 +556,26 @@
                                 "objectType": {
                                     "description": "An enum defining the variable type.",
                                     "type": "string",
-                                    "enum": [
-                                        "EventDataObject"
-                                    ]
+                                    "enum": ["EventDataObject"]
                                 },
                                 "propertyPath": {
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "propertyPath"
-                            ]
+                            "required": ["objectType", "propertyPath"]
                         }
                     ]
                 },
                 "symbolExpression": {
                     "title": "SymbolExpression",
                     "type": "string",
-                    "pattern": "^%(s|i|l|pp|tp|f|ctrl|ca)%.+%\\1%$"
+                    "pattern": "^%(s|i|l|pp|tp|f|ctrl|ctx|tr)%.+%\\1%$"
                 }
             },
             "properties": {
                 "objectType": {
                     "type": "string",
-                    "enum": [
-                        "Function"
-                    ]
+                    "enum": ["Function"]
                 },
                 "fn": {
                     "type": "string"
@@ -663,11 +587,7 @@
                     }
                 }
             },
-            "required": [
-                "objectType",
-                "fn",
-                "fnParams"
-            ]
+            "required": ["objectType", "fn", "fnParams"]
         },
         "FunctionList": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -679,22 +599,31 @@
         "HorizontalAlignment": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
-            "enum": [
-                "Left",
-                "Center",
-                "Right"
-            ]
+            "enum": ["Left", "Center", "Right"]
         },
         "Id": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
             "minLength": 1
         },
+        "Inputmode": {
+            "description": "Defines which keyboard layout should be loaded in the system keyboard when interacting. The exact layout file is defined in the project. \nThe most common one are: 'numeric', 'decimal', 'text'. Own project keywords are possible. \n'skip' ignores a focusIn, 'none' closes a keyboard on focusIn.",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "enum": ["text", "numeric", "decimal", "skip", "none"],
+                    "description": "'skip' ignores a focusIn, 'none' closes a keyboard on focusIn."
+                },
+                {
+                    "type": "string",
+                    "description": "Project defined input mode"
+                }
+            ],
+            "default": "text"
+        },
         "LinearGradientColor": {
             "type": "object",
-            "engineeringColumns": [
-                "angle"
-            ],
+            "engineeringColumns": ["angle"],
             "propertiesMeta": [
                 {
                     "name": "angle",
@@ -729,10 +658,7 @@
                     }
                 ]
             },
-            "required": [
-                "angle",
-                "stopPoints"
-            ]
+            "required": ["angle", "stopPoints"]
         },
         "Locale": {
             "default": "en",
@@ -741,10 +667,12 @@
         },
         "MeasurementUnit": {
             "type": "string",
-            "enum": [
-                "px",
-                "%"
-            ],
+            "enum": ["px", "%"],
+            "default": "px"
+        },
+        "MeasurementUnitOrFactor": {
+            "type": "string",
+            "enum": ["px", "%", "factor"],
             "default": "px"
         },
         "MeasurementValue": {
@@ -758,7 +686,7 @@
                     "category": "general",
                     "displayName": "Left",
                     "displayPriority": 10,
-                    "description": "",
+                    "description": "Sets the left padding of the element.",
                     "defaultValue": null,
                     "defaultValueInternal": null
                 },
@@ -777,7 +705,7 @@
                     "category": "general",
                     "displayName": "Top",
                     "displayPriority": 10,
-                    "description": "",
+                    "description": "Sets the top padding of the element.",
                     "defaultValue": null,
                     "defaultValueInternal": null
                 },
@@ -796,7 +724,7 @@
                     "category": "general",
                     "displayName": "Right",
                     "displayPriority": 10,
-                    "description": "",
+                    "description": "Sets the right padding of the element.",
                     "defaultValue": null,
                     "defaultValueInternal": null
                 },
@@ -815,7 +743,7 @@
                     "category": "general",
                     "displayName": "Bottom",
                     "displayPriority": 10,
-                    "description": "",
+                    "description": "Sets the bottom padding of the element.",
                     "defaultValue": null,
                     "defaultValueInternal": null
                 },
@@ -856,24 +784,125 @@
                     "$ref": "#/definitions/MeasurementUnit"
                 }
             },
-            "required": [
-                "left",
-                "top",
-                "right",
-                "bottom"
-            ]
+            "required": ["left", "top", "right", "bottom"]
         },
         "Path": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
             "minLength": 1
         },
+        "PixelPadding": {
+            "type": "object",
+            "propertiesMeta": [
+                {
+                    "name": "left",
+                    "category": "general",
+                    "displayName": "Left",
+                    "displayPriority": 10,
+                    "description": "Sets the left padding of the element.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "leftUnit",
+                    "category": "general",
+                    "refTo": "left",
+                    "displayName": "LeftUnit",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px"
+                },
+                {
+                    "name": "top",
+                    "category": "general",
+                    "displayName": "Top",
+                    "displayPriority": 10,
+                    "description": "Sets the top padding of the element.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "topUnit",
+                    "category": "general",
+                    "refTo": "top",
+                    "displayName": "TopUnit",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px"
+                },
+                {
+                    "name": "right",
+                    "category": "general",
+                    "displayName": "Right",
+                    "displayPriority": 10,
+                    "description": "Sets the right padding of the element.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "rightUnit",
+                    "category": "general",
+                    "refTo": "right",
+                    "displayName": "RightUnit",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px"
+                },
+                {
+                    "name": "bottom",
+                    "category": "general",
+                    "displayName": "Bottom",
+                    "displayPriority": 10,
+                    "description": "Sets the bottom padding of the element.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "bottomUnit",
+                    "category": "general",
+                    "refTo": "bottom",
+                    "displayName": "BottomUnit",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px"
+                }
+            ],
+            "properties": {
+                "left": {
+                    "$ref": "#/definitions/PositiveNumber"
+                },
+                "leftUnit": {
+                    "$ref": "#/definitions/PixelUnit"
+                },
+                "top": {
+                    "$ref": "#/definitions/PositiveNumber"
+                },
+                "topUnit": {
+                    "$ref": "#/definitions/PixelUnit"
+                },
+                "right": {
+                    "$ref": "#/definitions/PositiveNumber"
+                },
+                "rightUnit": {
+                    "$ref": "#/definitions/PixelUnit"
+                },
+                "bottom": {
+                    "$ref": "#/definitions/PositiveNumber"
+                },
+                "bottomUnit": {
+                    "$ref": "#/definitions/PixelUnit"
+                }
+            },
+            "required": ["left", "top", "right", "bottom"]
+        },
         "PixelUnit": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
-            "enum": [
-                "px"
-            ]
+            "enum": ["px"]
         },
         "PositiveNumber": {
             "allOf": [
@@ -886,32 +915,38 @@
             ]
         },
         "RecipeReference": {
+            "description": "Refers to one recipe of the server.",
             "type": "string",
             "minLength": 1
         },
+        "MultipleRecipeReferences": {
+            "description": "Refers to one or more recipe types of the server.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/RecipeReference"
+            }
+        },
         "RecipeTypeReference": {
+            "description": "Refers to one recipe type of the server.",
             "type": "string",
             "minLength": 1
+        },
+        "MultipleRecipeTypeReferences": {
+            "description": "Refers to one or more recipe types of the server.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/RecipeTypeReference"
+            }
         },
         "ScaleMode": {
             "type": "string",
-            "enum": [
-                "None",
-                "ScaleToFill",
-                "ScaleToFit",
-                "ScaleToFitWidth",
-                "ScaleToFitHeight"
-            ],
+            "enum": ["None", "ScaleToFill", "ScaleToFit", "ScaleToFitWidth", "ScaleToFitHeight"],
             "default": "None"
         },
         "ScrollMode": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
-            "enum": [
-                "No",
-                "Yes",
-                "Auto"
-            ]
+            "enum": ["No", "Yes", "Auto"]
         },
         "ServerEvent": {
             "anyOf": [
@@ -921,9 +956,7 @@
                     "properties": {
                         "type": {
                             "type": "integer",
-                            "enum": [
-                                0
-                            ],
+                            "enum": [0],
                             "options": [
                                 {
                                     "label": "ENUM_0_MESSAGE",
@@ -980,9 +1013,7 @@
                     "properties": {
                         "type": {
                             "type": "integer",
-                            "enum": [
-                                1
-                            ],
+                            "enum": [1],
                             "options": [
                                 {
                                     "label": "ENUM_1_ALARM",
@@ -1059,9 +1090,7 @@
                     "properties": {
                         "type": {
                             "type": "integer",
-                            "enum": [
-                                2
-                            ],
+                            "enum": [2],
                             "options": [
                                 {
                                     "label": "ENUM_2_PAYLOAD",
@@ -1085,30 +1114,18 @@
                         },
                         "payload": {}
                     },
-                    "required": [
-                        "type",
-                        "domain",
-                        "name",
-                        "timeReceived"
-                    ]
+                    "required": ["type", "domain", "name", "timeReceived"]
                 }
             ]
         },
         "SizeMode": {
             "type": "string",
-            "enum": [
-                "Value",
-                "Parent"
-            ],
+            "enum": ["Value", "Parent"],
             "default": "Value"
         },
         "SizeModeWithContent": {
             "type": "string",
-            "enum": [
-                "Value",
-                "Parent",
-                "Content"
-            ],
+            "enum": ["Value", "Parent", "Content"],
             "default": "Value"
         },
         "SolidColor": {
@@ -1121,9 +1138,7 @@
                     "default": "#000000"
                 }
             },
-            "required": [
-                "color"
-            ]
+            "required": ["color"]
         },
         "Sorting": {
             "title": "Sorting",
@@ -1131,10 +1146,7 @@
             "items": {
                 "title": "Sorting criterion",
                 "type": "object",
-                "engineeringColumns": [
-                    "name",
-                    "order"
-                ],
+                "engineeringColumns": ["name", "order"],
                 "propertiesMeta": [
                     {
                         "name": "name",
@@ -1161,26 +1173,18 @@
                     },
                     "order": {
                         "type": "string",
-                        "enum": [
-                            "Ascending",
-                            "Descending"
-                        ],
+                        "enum": ["Ascending", "Descending"],
                         "default": "Ascending"
                     }
                 },
-                "required": [
-                    "order"
-                ],
+                "required": ["order"],
                 "additionalProperties": false
             }
         },
         "StopPoint": {
             "title": "StopPoint definition",
             "type": "object",
-            "engineeringColumns": [
-                "color",
-                "stop"
-            ],
+            "engineeringColumns": ["color", "stop"],
             "properties": {
                 "color": {
                     "description": "Defining a color as CSS color: #-hexadecimal, rgb(), rgba(), hsl(), hsla(), lowercase css color keyword or transparent.",
@@ -1192,9 +1196,7 @@
                     "pattern": "^[0-9]*\\.?[0-9]+(?:px|%)$"
                 }
             },
-            "required": [
-                "color"
-            ]
+            "required": ["color"]
         },
         "Symbol": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -1207,10 +1209,7 @@
         },
         "ToggleState": {
             "type": "string",
-            "enum": [
-                "Normal",
-                "Active"
-            ],
+            "enum": ["Normal", "Active"],
             "default": "Normal"
         },
         "TransformList": {
@@ -1292,9 +1291,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Translate"
-                                    ]
+                                    "enum": ["Translate"]
                                 },
                                 "x": {
                                     "$ref": "#/definitions/MeasurementValue"
@@ -1315,9 +1312,7 @@
                                     "$ref": "#/definitions/MeasurementUnit"
                                 }
                             },
-                            "required": [
-                                "transformType"
-                            ]
+                            "required": ["transformType"]
                         },
                         {
                             "title": "Rotate",
@@ -1355,9 +1350,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Rotate"
-                                    ]
+                                    "enum": ["Rotate"]
                                 },
                                 "angle": {
                                     "$ref": "#/definitions/MeasurementValue"
@@ -1378,17 +1371,10 @@
                                             "type": "number"
                                         }
                                     },
-                                    "required": [
-                                        "x",
-                                        "y",
-                                        "z"
-                                    ]
+                                    "required": ["x", "y", "z"]
                                 }
                             },
-                            "required": [
-                                "transformType",
-                                "angle"
-                            ]
+                            "required": ["transformType", "angle"]
                         },
                         {
                             "title": "Scale",
@@ -1396,9 +1382,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Scale"
-                                    ]
+                                    "enum": ["Scale"]
                                 },
                                 "x": {
                                     "type": "number"
@@ -1410,9 +1394,7 @@
                                     "type": "number"
                                 }
                             },
-                            "required": [
-                                "transformType"
-                            ]
+                            "required": ["transformType"]
                         },
                         {
                             "title": "Skew",
@@ -1469,9 +1451,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Skew"
-                                    ]
+                                    "enum": ["Skew"]
                                 },
                                 "xAngle": {
                                     "$ref": "#/definitions/MeasurementValue"
@@ -1486,9 +1466,7 @@
                                     "$ref": "#/definitions/TransformList/definitions/angleUnit"
                                 }
                             },
-                            "required": [
-                                "transformType"
-                            ]
+                            "required": ["transformType"]
                         },
                         {
                             "title": "Origin",
@@ -1564,9 +1542,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Origin"
-                                    ]
+                                    "enum": ["Origin"]
                                 },
                                 "x": {
                                     "$ref": "#/definitions/MeasurementValue"
@@ -1587,9 +1563,7 @@
                                     "$ref": "#/definitions/MeasurementUnit"
                                 }
                             },
-                            "required": [
-                                "transformType"
-                            ]
+                            "required": ["transformType"]
                         },
                         {
                             "title": "Perspective",
@@ -1627,9 +1601,7 @@
                             "properties": {
                                 "transformType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Perspective"
-                                    ]
+                                    "enum": ["Perspective"]
                                 },
                                 "distance": {
                                     "$ref": "#/definitions/MeasurementValue"
@@ -1695,21 +1667,13 @@
                                     }
                                 }
                             },
-                            "required": [
-                                "transformType",
-                                "distance"
-                            ]
+                            "required": ["transformType", "distance"]
                         }
                     ]
                 },
                 "angleUnit": {
                     "type": "string",
-                    "enum": [
-                        "deg",
-                        "rad",
-                        "turn",
-                        "grad"
-                    ]
+                    "enum": ["deg", "rad", "turn", "grad"]
                 }
             },
             "type": "array",
@@ -1729,9 +1693,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Condition"
-                                    ]
+                                    "enum": ["Condition"]
                                 },
                                 "parts": {
                                     "type": "array",
@@ -1819,11 +1781,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "true",
-                                "false"
-                            ]
+                            "required": ["objectType", "true", "false"]
                         },
                         {
                             "title": "SwitchCase",
@@ -1832,9 +1790,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "SwitchCase"
-                                    ]
+                                    "enum": ["SwitchCase"]
                                 },
                                 "compare": {
                                     "$ref": "#/definitions/Trigger/definitions/value"
@@ -1874,12 +1830,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "compare",
-                                "cases",
-                                "caseDefault"
-                            ]
+                            "required": ["objectType", "compare", "cases", "caseDefault"]
                         },
                         {
                             "title": "WriteToSymbol",
@@ -1888,9 +1839,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "WriteToSymbol"
-                                    ]
+                                    "enum": ["WriteToSymbol"]
                                 },
                                 "symbolExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/symbolExpression"
@@ -1924,11 +1873,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "symbolExpression",
-                                "value"
-                            ]
+                            "required": ["objectType", "symbolExpression", "value"]
                         },
                         {
                             "title": "Function",
@@ -1936,9 +1881,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Function"
-                                    ]
+                                    "enum": ["Function"]
                                 },
                                 "fn": {
                                     "type": "string"
@@ -1975,11 +1918,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "fn",
-                                "fnParams"
-                            ]
+                            "required": ["objectType", "fn", "fnParams"]
                         },
                         {
                             "title": "JavaScript",
@@ -1988,9 +1927,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "JavaScript"
-                                    ]
+                                    "enum": ["JavaScript"]
                                 },
                                 "sourceLines": {
                                     "type": "array",
@@ -2004,10 +1941,7 @@
                                 },
                                 "waitMode": {
                                     "type": "string",
-                                    "enum": [
-                                        "Synchronous",
-                                        "Asynchronous"
-                                    ],
+                                    "enum": ["Synchronous", "Asynchronous"],
                                     "description": "Synchronous: Next step will called after last JavaScript line. Asynchronous: Next step will called after calling ctx.success() or ctx.error(TcHmi.Errors.ERROR)"
                                 },
                                 "success": {
@@ -2039,10 +1973,7 @@
                                     "description": "The next step is called after the completion of this step."
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "sourceLines"
-                            ]
+                            "required": ["objectType", "sourceLines"]
                         },
                         {
                             "title": "ActionTemplate",
@@ -2050,9 +1981,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ActionTemplate"
-                                    ]
+                                    "enum": ["ActionTemplate"]
                                 },
                                 "description": {
                                     "type": "string",
@@ -2093,11 +2022,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "templateName",
-                                "fnParams"
-                            ]
+                            "required": ["objectType", "templateName", "fnParams"]
                         },
                         {
                             "title": "ControlApiFunction",
@@ -2106,9 +2031,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ControlApiFunction"
-                                    ]
+                                    "enum": ["ControlApiFunction"]
                                 },
                                 "control": {
                                     "type": "string"
@@ -2148,11 +2071,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "control",
-                                "fn"
-                            ]
+                            "required": ["objectType", "control", "fn"]
                         },
                         {
                             "title": "FunctionExpression",
@@ -2160,9 +2079,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "FunctionExpression"
-                                    ]
+                                    "enum": ["FunctionExpression"]
                                 },
                                 "functionExpression": {
                                     "type": "string"
@@ -2193,10 +2110,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "functionExpression"
-                            ]
+                            "required": ["objectType", "functionExpression"]
                         },
                         {
                             "title": "Comment",
@@ -2205,9 +2119,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Comment"
-                                    ]
+                                    "enum": ["Comment"]
                                 },
                                 "target": {
                                     "$ref": "#/definitions/Trigger/definitions/comment"
@@ -2238,9 +2150,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType"
-                            ]
+                            "required": ["objectType"]
                         }
                     ]
                 },
@@ -2252,9 +2162,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "StaticValue"
-                                    ]
+                                    "enum": ["StaticValue"]
                                 },
                                 "value": {
                                     "anyOf": [
@@ -2279,11 +2187,7 @@
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "value",
-                                "valueType"
-                            ]
+                            "required": ["objectType", "value", "valueType"]
                         },
                         {
                             "title": "Symbol",
@@ -2291,18 +2195,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Symbol"
-                                    ]
+                                    "enum": ["Symbol"]
                                 },
                                 "symbolExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/symbolExpression"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "symbolExpression"
-                            ]
+                            "required": ["objectType", "symbolExpression"]
                         },
                         {
                             "title": "EventDataObject",
@@ -2310,18 +2209,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "EventDataObject"
-                                    ]
+                                    "enum": ["EventDataObject"]
                                 },
                                 "propertyPath": {
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "propertyPath"
-                            ]
+                            "required": ["objectType", "propertyPath"]
                         },
                         {
                             "title": "FunctionExpression",
@@ -2329,18 +2223,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "FunctionExpression"
-                                    ]
+                                    "enum": ["FunctionExpression"]
                                 },
                                 "functionExpression": {
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "functionExpression"
-                            ]
+                            "required": ["objectType", "functionExpression"]
                         }
                     ]
                 },
@@ -2357,17 +2246,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ControlAttributeBindingTarget"
-                                    ]
+                                    "enum": ["ControlAttributeBindingTarget"]
                                 },
                                 "attributeExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/controlAttributeSymbolExpression"
                                 }
                             },
-                            "required": [
-                                "objectType"
-                            ]
+                            "required": ["objectType"]
                         }
                     ]
                 },
@@ -2383,25 +2268,13 @@
                         },
                         "compareOperator": {
                             "type": "string",
-                            "enum": [
-                                "==",
-                                "===",
-                                "!=",
-                                "!==",
-                                "<",
-                                "<=",
-                                ">",
-                                ">="
-                            ]
+                            "enum": ["==", "===", "!=", "!==", "<", "<=", ">", ">="]
                         },
                         "logic": {
                             "anyOf": [
                                 {
                                     "type": "string",
-                                    "enum": [
-                                        "AND",
-                                        "OR"
-                                    ]
+                                    "enum": ["AND", "OR"]
                                 },
                                 {
                                     "type": "null"
@@ -2409,11 +2282,7 @@
                             ]
                         }
                     },
-                    "required": [
-                        "compare1",
-                        "compare2",
-                        "compareOperator"
-                    ]
+                    "required": ["compare1", "compare2", "compareOperator"]
                 },
                 "vCase": {
                     "title": "VCase",
@@ -2429,10 +2298,7 @@
                             "$ref": "#/definitions/Trigger/definitions/value"
                         }
                     },
-                    "required": [
-                        "actions",
-                        "caseValue"
-                    ]
+                    "required": ["actions", "caseValue"]
                 },
                 "dCase": {
                     "title": "DCase",
@@ -2445,14 +2311,12 @@
                             }
                         }
                     },
-                    "required": [
-                        "actions"
-                    ]
+                    "required": ["actions"]
                 },
                 "symbolExpression": {
                     "title": "SymbolExpression",
                     "type": "string",
-                    "pattern": "^%(s|i|l|pp|tp|f|ctrl)%.+%\\1%$"
+                    "pattern": "^%(s|i|l|pp|tp|f|ctrl|ctx|tr)%.+%\\1%$"
                 },
                 "controlSymbolExpression": {
                     "title": "controlSymbolExpression",
@@ -2488,10 +2352,7 @@
                 }
             },
             "additionalProperties": false,
-            "required": [
-                "event",
-                "actions"
-            ]
+            "required": ["event", "actions"]
         },
         "TriggerList": {
             "$schema": "http://json-schema.org/draft-04/schema",
@@ -2513,46 +2374,34 @@
         "VerticalAlignment": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "string",
-            "enum": [
-                "Top",
-                "Center",
-                "Bottom"
-            ]
+            "enum": ["Top", "Center", "Bottom"]
         },
         "VirtualControlRightMappingList": {
             "$schema": "http://json-schema.org/draft-04/schema",
             "type": "array",
             "items": {
                 "type": "object",
-                "engineeringColumns": [
-                    "virtualControlRight",
-                    "controlRight"
-                ],
+                "engineeringColumns": ["virtualControlRight", "controlRight"],
                 "properties": {
                     "virtualControlRight": {
-                        "description": "Name of the virtual control right.",
+                        "description": "Name of the right which is configured on a parent control (aka outer right).",
                         "type": "string",
                         "minLength": 1
                     },
                     "controlRight": {
-                        "description": "Real control right.",
+                        "description": "Name of the right which is working on this control (aka inner right).",
                         "type": "string",
                         "minLength": 1
                     }
                 },
-                "required": [
-                    "controlRight",
-                    "virtualControlRight"
-                ]
-            }
+                "description": "Allows a mapping of rights to parent control virtual rights. For example the 'operate' right of this control can be configured to react on a custom 'canStartPump' right of a parent control.",
+                "required": ["controlRight", "virtualControlRight"]
+            },
+            "description": "Allows a mapping of rights to parent control virtual rights. For example the 'operate' right of this control can be configured to react on a custom 'canStartPump' right of a parent control."
         },
         "Visibility": {
             "type": "string",
-            "enum": [
-                "Visible",
-                "Hidden",
-                "Collapsed"
-            ],
+            "enum": ["Visible", "Hidden", "Collapsed"],
             "default": "Visible"
         },
         "EnumMapping": {
@@ -2562,6 +2411,11 @@
                     "type": "string"
                 }
             }
+        },
+        "DataPrecedence": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "string",
+            "enum": ["Data", "UserInput", "ChangedDataOnly"]
         }
     }
 }

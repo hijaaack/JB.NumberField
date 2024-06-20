@@ -19,12 +19,12 @@ var __extends = (this && this.__extends) || (function () {
             && d && d.name
             && TcHmi && TcHmi.Log && TcHmi.Log.error
         ) {
-            TcHmi.Log.error('Inheritance parent of control type \'' + d.name + '\' is not known and will therefore not be available.' + '\n' +
+            TcHmi.Log.error('Inheritance parent of control type "' + d.name + '" is not known and will therefore not be available.' + '\n' +
                 'Possible reason/s:' + '\n' +
                 '- Related source file is not included in html document.' + '\n' +
                 '- Related source file is not included in required order in html document.' + '\n'
             );
-            throw new TypeError('Inheritance parent of control type \'' + d.name + '\' is not known.');
+            throw new TypeError('Inheritance parent of control type "' + d.name + '" is not known.');
         }
         if (typeof b !== "function" && b !== null)
             throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");

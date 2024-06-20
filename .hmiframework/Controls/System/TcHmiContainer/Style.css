@@ -1,10 +1,12 @@
-﻿/** Styles for all themes */
+/** Styles for all themes */
 
 /* Style for the main element */
-.TcHmi_Controls_System_TcHmiContainer, .tchmi-container {
+.TcHmi_Controls_System_TcHmiContainer,
+.tchmi-container {
 }
 
-.TcHmi_Controls_System_TcHmiContainer-template, .tchmi-container-template {
+.TcHmi_Controls_System_TcHmiContainer-template,
+.tchmi-container-template {
     perspective: inherit;
     perspective-origin: inherit;
     position: relative;

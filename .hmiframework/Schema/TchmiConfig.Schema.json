@@ -18,15 +18,12 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Path to the file",
+                        "description": "Path to the file with the project directory as base path.",
                         "minLength": 1
                     },
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "Stylesheet",
-                            "JavaScript"
-                        ],
+                        "enum": ["Stylesheet", "JavaScript"],
                         "description": "Type of file."
                     },
                     "description": {
@@ -34,10 +31,7 @@
                         "description": "A long description of this file."
                     }
                 },
-                "required": [
-                    "name",
-                    "type"
-                ]
+                "required": ["name", "type"]
             }
         },
         "activeTheme": {
@@ -60,15 +54,12 @@
                             "properties": {
                                 "name": {
                                     "type": "string",
-                                    "description": "Path to the file",
+                                    "description": "Path to the file with the project directory as base path.",
                                     "minLength": 1
                                 },
                                 "type": {
                                     "type": "string",
-                                    "enum": [
-                                        "Stylesheet",
-                                        "ThemedValues"
-                                    ],
+                                    "enum": ["Stylesheet", "ThemedValues"],
                                     "description": "Type of the control asset."
                                 },
                                 "description": {
@@ -84,6 +75,13 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "replacesThemeForPackageComponents": {
+                        "type": "array",
+                        "description": "Project only: Do not load .css files for these package components (as 'packageId/componentName'). \nFor example 'Beckhoff.TwinCAT.HMI.Controls/ContentTabs' or for all global resources 'Beckhoff.TwinCAT.HMI.ResponsiveNavigation'",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             }
@@ -94,13 +92,7 @@
         },
         "scaleMode": {
             "type": "string",
-            "enum": [
-                "None",
-                "ScaleToFill",
-                "ScaleToFit",
-                "ScaleToFitWidth",
-                "ScaleToFitHeight"
-            ],
+            "enum": ["None", "ScaleToFill", "ScaleToFit", "ScaleToFitWidth", "ScaleToFitHeight"],
             "description": "Scalemode of the full Application."
         },
         "startupView": {
@@ -129,10 +121,7 @@
                 },
                 "websocketSubscriptionMode": {
                     "type": "string",
-                    "enum": [
-                        "Change",
-                        "Poll"
-                    ],
+                    "enum": ["Change", "Poll"],
                     "description": "Subscription mode used for symbol related subscriptions if no override is specified."
                 }
             }
@@ -165,9 +154,7 @@
                         "description": "Path to the Usercontrol main file."
                     }
                 },
-                "required": [
-                    "url"
-                ]
+                "required": ["url"]
             }
         },
         "content": {
@@ -199,10 +186,7 @@
                         "default": false
                     }
                 },
-                "required": [
-                    "url",
-                    "preload"
-                ]
+                "required": ["url", "preload"]
             }
         },
         "views": {
@@ -229,10 +213,7 @@
                         "default": false
                     }
                 },
-                "required": [
-                    "url",
-                    "preload"
-                ]
+                "required": ["url", "preload"]
             }
         },
         "userFunctions": {
@@ -250,32 +231,68 @@
         },
         "symbols": {
             "type": "object",
+            "description": "Definition of all project based symbols.",
             "properties": {
                 "internal": {
                     "type": "object",
+                    "description": "Definition of all project based internal symbols (available via %i%symbolname%/i%). Key is the symbol name.",
                     "additionalProperties": {
                         "type": "object",
+                        "description": "Definition of the internal symbol with this name.",
                         "properties": {
-                            "value": {},
+                            "value": {
+                                "description": "Value for this internal symbol."
+                            },
                             "persist": {
-                                "type": "boolean"
+                                "type": "boolean",
+                                "description": "The change of value is saved in the client and available after reload. Defaults to false if not provided.",
+                                "default": false
                             },
                             "readonly": {
-                                "type": "boolean"
+                                "type": "boolean",
+                                "description": "The symbol can not be changed. Defaults to false if not provided.",
+                                "default": false
                             },
                             "type": {
-                                "type": "string"
+                                "type": "string",
+                                "minLength": 6,
+                                "pattern": "^tchmi:",
+                                "description": "Information about the expected type as a tchmi reference name."
                             }
                         },
-                        "required": [
-                            "type"
-                        ]
+                        "required": ["type"]
+                    }
+                },
+                "themedResources": {
+                    "type": "object",
+                    "description": "Definition of all project based themedResource symbols (available via %tr%symbolname%/tr%). Key is the symbol name.",
+                    "additionalProperties": {
+                        "type": "object",
+                        "description": "Definition of the themedResource symbol with this name.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "minLength": 6,
+                                "pattern": "^tchmi:",
+                                "description": "Information about the expected type as a tchmi reference name. \nThe type of the parameter gives the tchmi creator a hint to use a custom editor."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "A description of the themed resource."
+                            },
+                            "values": {
+                                "type": "object",
+                                "description": "A map containing a value for each theme. Key is the themename.",
+                                "additionalProperties": {
+                                    "description": "Value for each resource name"
+                                }
+                            }
+                        },
+                        "required": ["type"]
                     }
                 }
             },
-            "required": [
-                "internal"
-            ]
+            "required": ["internal"]
         },
         "trigger": {
             "description": "Definition of global Triggers.",
@@ -432,9 +449,7 @@
                         "description": "Path to the keyboard layout."
                     }
                 },
-                "required": [
-                    "url"
-                ]
+                "required": ["url"]
             }
         },
         "disableLoadingOptimization": {
@@ -490,15 +505,10 @@
                             "description": "Height as a Pixel Number."
                         }
                     },
-                    "required": [
-                        "defaultHeight",
-                        "defaultWidth"
-                    ]
+                    "required": ["defaultHeight", "defaultWidth"]
                 }
             },
-            "required": [
-                "viewport"
-            ]
+            "required": ["viewport"]
         },
         "binding": {
             "description": "Binding settings",
@@ -507,15 +517,109 @@
                 "symbolError": {
                     "description": "Determines how a binding will handle symbol related errors.\nPossible values:\n- Reset: The binding will force the control attribute to be reset to its default value in case of an error.\n- Ignore: The binding will ignore the error and not force the control attribute to be reset to its default value.",
                     "type": "string",
-                    "enum": [
-                        "Ignore",
-                        "Reset"
-                    ],
+                    "enum": ["Ignore", "Reset"],
                     "default": "Ignore"
                 }
             },
             "additionalProperties": false,
-            "required": [ "symbolError" ]
+            "required": ["symbolError"]
+        },
+        "systemKeyboard": {
+            "description": "Defines the system keyboard",
+            "type": "object",
+            "properties": {
+                "providerName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Name of the keyboard provider or empty string to disable system keyboard. \nDefaults to empty string."
+                },
+                "projectKeyboardMapping": {
+                    "type": "object",
+                    "description": "Definition of the keyboard mappings. Key is the locale.",
+                    "additionalProperties": {
+                        "type": "object",
+                        "description": "Mapping from input mode string to project based keyboard layout. Key is the input mode.",
+                        "properties": {
+                            "text": {
+                                "type": "string",
+                                "description": "Keyboard layout path for texts and unknown input elements. \nCould be the empty string. Will fall back to 'text' of fallback language."
+                            },
+                            "decimal": {
+                                "type": "string",
+                                "description": "Keyboard layout path for decimal input elements (potential fractional input). \nCould be the empty string. Will fall back to 'decimal' of fallback language, \n'text' keyboard file of this language or 'text' of fallback language."
+                            },
+                            "numeric": {
+                                "type": "string",
+                                "description": "Keyboard layout path for numeric input elements (non-fractional input). \nCould be empty. Will fall back to 'decimal' of this language, \n'numeric' / 'decimal' of fallback language, \n'text' keyboard file of this language or 'text' of fallback language."
+                            }
+                        },
+                        "required": ["decimal", "numeric", "text"],
+                        "additionalProperties": {
+                            "type": "string",
+                            "description": "Configured project based keyboard path for some text controls or input controls. \nCould be the empty string. Will fall back to the same input mode of fallback language, \n'text' keyboard file of this language or 'text' of fallback language."
+                        }
+                    }
+                },
+                "layout": {
+                    "type": "object",
+                    "description": "Layout of the system keyboard.",
+                    "properties": {
+                        "height": {
+                            "type": "number",
+                            "description": "Pixel height of the system keyboard. \nIf empty the defined height of the keyboard layout will be used."
+                        }
+                    }
+                }
+            },
+            "required": ["providerName"],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "providerName": ""
+                },
+                {
+                    "providerName": "Beckhoff.TcHmiKeyboard",
+                    "projectKeyboardMapping": {
+                        "de": {
+                            "text": "KeyboardLayouts/German - indirect basic.keyboard.json",
+                            "decimal": "KeyboardLayouts/Numpad (plusminus) - indirect.keyboard.json",
+                            "numeric": "KeyboardLayouts/Numpad (plusminus) - indirect.keyboard.json"
+                        },
+                        "en": {
+                            "text": "KeyboardLayouts/US - indirect compact.keyboard.json",
+                            "decimal": "KeyboardLayouts/Numpad (plusminus) - indirect.keyboard.json",
+                            "numeric": "KeyboardLayouts/Numpad (plusminus) - indirect.keyboard.json"
+                        }
+                    }
+                },
+                {
+                    "providerName": "Beckhoff.TcHmiKeyboard",
+                    "projectKeyboardMapping": {
+                        "de": {
+                            "text": "KeyboardLayouts/German - indirect basic.keyboard.json",
+                            "decimal": "",
+                            "numeric": ""
+                        },
+                        "en": {
+                            "text": "KeyboardLayouts/US - indirect compact.keyboard.json",
+                            "decimal": "",
+                            "numeric": ""
+                        }
+                    }
+                }
+            ]
+        },
+        "systemPopups": {
+            "description": "Defines the system popups",
+            "type": "object",
+            "properties": {
+                "providerName": {
+                    "type": "string",
+                    "description": "Name of the popup provider."
+                }
+            },
+            "required": ["providerName"],
+            "additionalProperties": false
         }
     },
     "additionalProperties": false,
@@ -533,7 +637,8 @@
         "actionTemplates",
         "languages",
         "creatorSettings",
-        "binding"
+        "binding",
+        "systemPopups"
     ],
     "definitions": {
         "Trigger": {
@@ -548,9 +653,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Condition"
-                                    ]
+                                    "enum": ["Condition"]
                                 },
                                 "parts": {
                                     "type": "array",
@@ -638,11 +741,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "true",
-                                "false"
-                            ]
+                            "required": ["objectType", "true", "false"]
                         },
                         {
                             "title": "SwitchCase",
@@ -651,9 +750,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "SwitchCase"
-                                    ]
+                                    "enum": ["SwitchCase"]
                                 },
                                 "compare": {
                                     "$ref": "#/definitions/Trigger/definitions/value"
@@ -693,12 +790,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "compare",
-                                "cases",
-                                "caseDefault"
-                            ]
+                            "required": ["objectType", "compare", "cases", "caseDefault"]
                         },
                         {
                             "title": "WriteToSymbol",
@@ -707,9 +799,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "WriteToSymbol"
-                                    ]
+                                    "enum": ["WriteToSymbol"]
                                 },
                                 "symbolExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/symbolExpression"
@@ -743,11 +833,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "symbolExpression",
-                                "value"
-                            ]
+                            "required": ["objectType", "symbolExpression", "value"]
                         },
                         {
                             "title": "Function",
@@ -755,9 +841,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Function"
-                                    ]
+                                    "enum": ["Function"]
                                 },
                                 "fn": {
                                     "type": "string"
@@ -794,11 +878,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "fn",
-                                "fnParams"
-                            ]
+                            "required": ["objectType", "fn", "fnParams"]
                         },
                         {
                             "title": "JavaScript",
@@ -807,9 +887,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "JavaScript"
-                                    ]
+                                    "enum": ["JavaScript"]
                                 },
                                 "sourceLines": {
                                     "type": "array",
@@ -823,10 +901,7 @@
                                 },
                                 "waitMode": {
                                     "type": "string",
-                                    "enum": [
-                                        "Synchronous",
-                                        "Asynchronous"
-                                    ],
+                                    "enum": ["Synchronous", "Asynchronous"],
                                     "description": "Synchronous: Next step will called after last JavaScript line. Asynchronous: Next step will called after calling ctx.success() or ctx.error(TcHmi.Errors.ERROR)"
                                 },
                                 "success": {
@@ -858,10 +933,7 @@
                                     "description": "The next step is called after the completion of this step."
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "sourceLines"
-                            ]
+                            "required": ["objectType", "sourceLines"]
                         },
                         {
                             "title": "ActionTemplate",
@@ -869,9 +941,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ActionTemplate"
-                                    ]
+                                    "enum": ["ActionTemplate"]
                                 },
                                 "description": {
                                     "type": "string",
@@ -912,11 +982,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "templateName",
-                                "fnParams"
-                            ]
+                            "required": ["objectType", "templateName", "fnParams"]
                         },
                         {
                             "title": "ControlApiFunction",
@@ -925,9 +991,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ControlApiFunction"
-                                    ]
+                                    "enum": ["ControlApiFunction"]
                                 },
                                 "control": {
                                     "type": "string"
@@ -967,11 +1031,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "control",
-                                "fn"
-                            ]
+                            "required": ["objectType", "control", "fn"]
                         },
                         {
                             "title": "FunctionExpression",
@@ -979,9 +1039,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "FunctionExpression"
-                                    ]
+                                    "enum": ["FunctionExpression"]
                                 },
                                 "functionExpression": {
                                     "type": "string"
@@ -1012,10 +1070,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "functionExpression"
-                            ]
+                            "required": ["objectType", "functionExpression"]
                         },
                         {
                             "title": "Comment",
@@ -1024,9 +1079,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Comment"
-                                    ]
+                                    "enum": ["Comment"]
                                 },
                                 "target": {
                                     "$ref": "#/definitions/Trigger/definitions/comment"
@@ -1057,9 +1110,7 @@
                                     "type": "boolean"
                                 }
                             },
-                            "required": [
-                                "objectType"
-                            ]
+                            "required": ["objectType"]
                         }
                     ]
                 },
@@ -1071,9 +1122,7 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "StaticValue"
-                                    ]
+                                    "enum": ["StaticValue"]
                                 },
                                 "value": {
                                     "anyOf": [
@@ -1098,11 +1147,7 @@
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "value",
-                                "valueType"
-                            ]
+                            "required": ["objectType", "value", "valueType"]
                         },
                         {
                             "title": "Symbol",
@@ -1110,18 +1155,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Symbol"
-                                    ]
+                                    "enum": ["Symbol"]
                                 },
                                 "symbolExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/symbolExpression"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "symbolExpression"
-                            ]
+                            "required": ["objectType", "symbolExpression"]
                         },
                         {
                             "title": "EventDataObject",
@@ -1129,18 +1169,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "EventDataObject"
-                                    ]
+                                    "enum": ["EventDataObject"]
                                 },
                                 "propertyPath": {
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "propertyPath"
-                            ]
+                            "required": ["objectType", "propertyPath"]
                         },
                         {
                             "title": "FunctionExpression",
@@ -1148,18 +1183,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "FunctionExpression"
-                                    ]
+                                    "enum": ["FunctionExpression"]
                                 },
                                 "functionExpression": {
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "objectType",
-                                "functionExpression"
-                            ]
+                            "required": ["objectType", "functionExpression"]
                         }
                     ]
                 },
@@ -1176,17 +1206,13 @@
                             "properties": {
                                 "objectType": {
                                     "type": "string",
-                                    "enum": [
-                                        "ControlAttributeBindingTarget"
-                                    ]
+                                    "enum": ["ControlAttributeBindingTarget"]
                                 },
                                 "attributeExpression": {
                                     "$ref": "#/definitions/Trigger/definitions/controlAttributeSymbolExpression"
                                 }
                             },
-                            "required": [
-                                "objectType"
-                            ]
+                            "required": ["objectType"]
                         }
                     ]
                 },
@@ -1202,25 +1228,13 @@
                         },
                         "compareOperator": {
                             "type": "string",
-                            "enum": [
-                                "==",
-                                "===",
-                                "!=",
-                                "!==",
-                                "<",
-                                "<=",
-                                ">",
-                                ">="
-                            ]
+                            "enum": ["==", "===", "!=", "!==", "<", "<=", ">", ">="]
                         },
                         "logic": {
                             "anyOf": [
                                 {
                                     "type": "string",
-                                    "enum": [
-                                        "AND",
-                                        "OR"
-                                    ]
+                                    "enum": ["AND", "OR"]
                                 },
                                 {
                                     "type": "null"
@@ -1228,11 +1242,7 @@
                             ]
                         }
                     },
-                    "required": [
-                        "compare1",
-                        "compare2",
-                        "compareOperator"
-                    ]
+                    "required": ["compare1", "compare2", "compareOperator"]
                 },
                 "vCase": {
                     "title": "VCase",
@@ -1248,10 +1258,7 @@
                             "$ref": "#/definitions/Trigger/definitions/value"
                         }
                     },
-                    "required": [
-                        "actions",
-                        "caseValue"
-                    ]
+                    "required": ["actions", "caseValue"]
                 },
                 "dCase": {
                     "title": "DCase",
@@ -1264,14 +1271,12 @@
                             }
                         }
                     },
-                    "required": [
-                        "actions"
-                    ]
+                    "required": ["actions"]
                 },
                 "symbolExpression": {
                     "title": "SymbolExpression",
                     "type": "string",
-                    "pattern": "^%(s|i|l|pp|tp|f|ctrl)%.+%\\1%$"
+                    "pattern": "^%(s|i|l|pp|tp|f|ctrl|ctx|tr)%.+%\\1%$"
                 },
                 "controlSymbolExpression": {
                     "title": "controlSymbolExpression",
@@ -1307,10 +1312,7 @@
                 }
             },
             "additionalProperties": false,
-            "required": [
-                "event",
-                "actions"
-            ]
+            "required": ["event", "actions"]
         }
     }
 }

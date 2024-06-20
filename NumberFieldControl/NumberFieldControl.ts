@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Generated 10/5/2020 4:01:03 PM
  * Copyright (C) 2020
  */
@@ -47,7 +47,7 @@ module TcHmi {
                 protected __symbolExpression: string | null;
                 protected __decimals!: number;
 
-				/**
+                /**
                   * If raised, the control object exists in control cache and constructor of each inheritation level was called.
                   * Call attribute processor functions here to initialize default values!
                   */
@@ -91,15 +91,7 @@ module TcHmi {
                     $(this.__elementMinus).on('click', function () {
                         $this.__substractValue();
                     });
-                    $(this.__elementMinus).on('touchstart', function () {
-                        $this.__substractValue();
-                    });
                     $(this.__elementPlus).on('click', function () {
-                        //@ts-ignore
-                       // document.querySelector(".numberfield-plus-icon").getSVGDocument().getElementById("plus-solid-icon").setAttribute("fill", "red")
-                        $this.__addValue();
-                    });
-                    $(this.__elementPlus).on('touchstart', function () {   
                         $this.__addValue();
                     });
 
@@ -116,10 +108,9 @@ module TcHmi {
                 public __detach() {
                     super.__detach();
 
-                    $(this.__elementMinus).off('mousedown');
-                    $(this.__elementMinus).off('touchstart');
-                    $(this.__elementPlus).off('mousedown');
-                    $(this.__elementPlus).off('touchstart');
+                    $(this.__elementMinus).off('click');
+                    $(this.__elementPlus).off('click');
+
                     /**
                      * Disable everything which is not needed while the control is not part of the active dom.
                      * No need to listen to events for example!
@@ -184,16 +175,16 @@ module TcHmi {
                     $(this.__elementValueP).attr("data-label", Number(this.__value).toFixed(this.__decimals) + " " + this.__unit);
 
                     //Write back value                            
-                     // @ts-ignore
+                    // @ts-ignore
                     if (this.__elementTemplateRoot[0].offsetParent != null && this.__elementTemplateRoot[0].offsetParent != undefined) {
                         // @ts-ignore
                         this.__symbolExpression = this.__elementTemplateRoot[0].offsetParent.dataset.tchmiValue;
-
-                        TcHmi.Symbol.writeEx(String(this.__symbolExpression), this.__value, function (callback) {
-                            //console.log(callback);
-                        });
-                       
-                    } 
+                        console.log(this.__symbolExpression);
+                        if (this.__symbolExpression?.includes("%")) {
+                            TcHmi.Symbol.writeEx(String(this.__symbolExpression), this.__value);
+                        }
+                           
+                    }
 
                     //Set disable class if needed
                     //Set class if needed

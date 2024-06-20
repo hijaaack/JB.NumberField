@@ -1,22 +1,22 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>JB.NumberField</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <description>Control for substracting or adding value to a number.</description>
     <authors>Jack Borelius</authors>
     <title>NumberField</title>
     <owners>Jack Borelius</owners>
     <projectUrl>https://github.com/hijaaack/JB.NumberField</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Updated Icon, package versions and added github project link.</releaseNotes>
-    <copyright>Copyright 2022</copyright>
+    <releaseNotes>Bugfixes with touch events and upgrades nugetpackages.</releaseNotes>
+    <copyright>Copyright 2024</copyright>
     <tags>TwinCAT HMI</tags>
     <license type="expression">MIT</license>
     <icon>Images\logo.png</icon>
     <dependencies>
       <group targetFramework="native1.12-tchmi">
-        <dependency id="Beckhoff.TwinCAT.HMI.Framework" version="12.752.0" />
+        <dependency id="Beckhoff.TwinCAT.HMI.Framework" version="12.760.59" />
       </group>
     </dependencies>
   </metadata>

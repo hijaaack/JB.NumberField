@@ -3,6 +3,22 @@
     "apiVersion": 1,
     "modules": [
         {
+            "type": "Resource",
+            "path": "Style.css"
+        },
+        {
+            "type": "Resource",
+            "path": "./Themes/Base/Style.css",
+            "theme": "Base",
+            "component": "General"
+        },
+        {
+            "type": "Resource",
+            "path": "./Themes/Base-Dark/Style.css",
+            "theme": "Base-Dark",
+            "component": "General"
+        },
+        {
             "type": "Control",
             "basePath": "Controls/System/TcHmiControl",
             "descriptionFile": "Description.json",
@@ -17,6 +33,12 @@
         {
             "type": "Control",
             "basePath": "Controls/System/TcHmiPartial",
+            "descriptionFile": "Description.json",
+            "toolboxCategory": "Beckhoff.TwinCAT.HMI:200"
+        },
+        {
+            "type": "Control",
+            "basePath": "Controls/System/TcHmiPopup",
             "descriptionFile": "Description.json",
             "toolboxCategory": "Beckhoff.TwinCAT.HMI:200"
         },

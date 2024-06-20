@@ -35,13 +35,7 @@
                     "minimum": 0
                 }
             },
-            "required": [
-                "full",
-                "major",
-                "minor",
-                "revision",
-                "build"
-            ]
+            "required": ["full", "major", "minor", "revision", "build"]
         },
         "dependencyFiles": {
             "type": "array",
@@ -51,16 +45,13 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "pattern": "^(?!(\/)).*$",
-                        "description": "Path to the file",
+                        "pattern": "^(?!(/)).*$",
+                        "description": "Path to the file with the function directory as base path.",
                         "minLength": 1
                     },
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "Stylesheet",
-                            "JavaScript"
-                        ],
+                        "enum": ["Stylesheet", "JavaScript"],
                         "description": "Type of the function asset."
                     },
                     "description": {
@@ -69,11 +60,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "type",
-                    "description"
-                ]
+                "required": ["name", "type", "description"]
             }
         },
         "function": {
@@ -113,10 +100,7 @@
                 "waitMode": {
                     "type": "string",
                     "default": "Synchronous",
-                    "enum": [
-                        "Synchronous",
-                        "Asynchronous"
-                    ]
+                    "enum": ["Synchronous", "Asynchronous"]
                 },
                 "returnValue": {
                     "anyOf": [
@@ -176,6 +160,10 @@
                                 "type": "boolean",
                                 "description": "This parameter can have the same binding options as a control attribute."
                             },
+                            "allowSymbolReferenceWatchDelegation": {
+                                "type": "boolean",
+                                "description": "Determines if symbol references injected via this parameter will be watched by the function itself if 'delegatedWatch: true' is defined in the context object when calling the function."
+                            },
                             "asReference": {
                                 "type": "boolean",
                                 "description": "TcHmiCreator ui state. Do not manipulate."
@@ -193,26 +181,12 @@
                             }
                         },
                         "additionalProperties": false,
-                        "required": [
-                            "name",
-                            "displayName",
-                            "description",
-                            "type",
-                            "required",
-                            "bindable"
-                        ]
+                        "required": ["name", "displayName", "description", "type", "required", "bindable"]
                     }
                 }
             },
             "additionalProperties": false,
-            "required": [
-                "name",
-                "displayName",
-                "namespace",
-                "description",
-                "arguments",
-                "returnValue"
-            ]
+            "required": ["name", "displayName", "namespace", "description", "arguments", "returnValue"]
         },
         "dataTypes": {
             "type": "array",
@@ -223,14 +197,12 @@
                     "schema": {
                         "type": "string",
                         "minLength": 1,
-                        "pattern": "^(?!(\/)).*$",
+                        "pattern": "^(?!(/)).*$",
                         "description": "Path to the schema describing the datatype."
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "schema"
-                ]
+                "required": ["schema"]
             }
         },
         "languages": {
@@ -254,7 +226,5 @@
             }
         }
     },
-    "required": [
-        "function"
-    ]
+    "required": ["function"]
 }

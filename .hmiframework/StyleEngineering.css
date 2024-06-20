@@ -49,10 +49,10 @@
     pointer-events: none;
 }
 
-    /* ***************** Untransformed container */
-    .tchmi-creator-originalposition.tchmi-creator-active-highlight.tchmi-creator-control-selected {
-        outline-color: var(--tchmi-designer-control-untransformed-color);
-    }
+/* ***************** Untransformed container */
+.tchmi-creator-originalposition.tchmi-creator-active-highlight.tchmi-creator-control-selected {
+    outline-color: var(--tchmi-designer-control-untransformed-color);
+}
 
 /* ***************** Transformed unselected container */
 .tchmi-creator-controlposition.tchmi-creator-active-highlight {
@@ -64,19 +64,17 @@
     outline-color: var(--tchmi-designer-control-selected-color);
 }
 
-    /* ***************** Cells of a selected grid */
-    .tchmi-creator-controlposition.tchmi-creator-childcontrol-selected > .tchmi-creator-gridcell,
-    .tchmi-creator-controlposition.tchmi-creator-control-selected > .tchmi-creator-gridcell {
-        outline: 1px solid var(--tchmi-designer-control-selected-color); /* the outlines of two neighbour cells are both visible */
-        opacity: 0.5;
-    }
+/* ***************** Cells of a selected grid */
+.tchmi-creator-controlposition.tchmi-creator-childcontrol-selected > .tchmi-creator-gridcell,
+.tchmi-creator-controlposition.tchmi-creator-control-selected > .tchmi-creator-gridcell {
+    outline: 1px solid var(--tchmi-designer-control-selected-color); /* the outlines of two neighbour cells are both visible */
+    opacity: 0.5;
+}
 
 /* ************************* Control Name ************************* */
 .tchmi-creator-controlname {
-    font-family: 'Segoe UI', Tahoma, /* same as in VS */
-    'Microsoft YaHei', /* nicer chinese */
-    'Meiryo', /* nicer japanese */
-    sans-serif;
+    font-family: 'Segoe UI', Tahoma /* <- same as in VS */, 'Microsoft YaHei' /* <- nicer chinese */,
+        'Meiryo' /* <- nicer japanese */, sans-serif;
     font-style: normal;
     font-weight: normal;
     cursor: default;
@@ -97,9 +95,9 @@
     white-space: nowrap; /* prevent multi line even for chinese chars */
     display: none;
 }
-    .tchmi-creator-controlname bdi {
-        direction: initial; /* The text should be rendered with the native direction and not inherited rtl */
-    }
+.tchmi-creator-controlname bdi {
+    direction: initial; /* The text should be rendered with the native direction and not inherited rtl */
+}
 
 .tchmi-creator-control-selected > .tchmi-creator-controlname {
     display: block;
@@ -116,22 +114,25 @@
     border-style: solid;
     border-color: transparent;
     border-top-width: 7px;
-    border-bottom-width: 7px;    
+    border-bottom-width: 7px;
     background-color: var(--tchmi-designer-control-selected-color);
     background-clip: padding-box;
     pointer-events: none;
     color: var(--tchmi-designer-control-selected-color);
-    text-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color), 0 0 4px var(--tchmi-designer-control-selected-secondary-color);
+    text-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color);
     display: none;
-}
-
-@media (min-resolution: 1.1dppx) {
-    /* Workaround for https://bugs.chromium.org/p/chromium/issues/detail?id=1240617
-     * Blink rounds background and inner borders differently in subpixel calculations leading to larger borders and invisible distance lines
-     */
-    .tchmi-creator-distance-line {
-        border-top-width: 6px;
-    }
 }
 
 .tchmi-creator-control-selected > .tchmi-creator-distance-line {
@@ -142,7 +143,7 @@
     bottom: calc(100% - 7px); /* offset to center the box anchor */
     left: 50%;
     transform: rotate(-90deg);
-    transform-origin: left;
+    transform-origin: 0px 8px; /* 7.5 would cause rounding issues */
     text-align: right;
 }
 
@@ -171,7 +172,7 @@
     bottom: -8px; /* offset to center the box anchor */
     left: calc(100% + 15px);
     transform: rotate(-90deg);
-    transform-origin: left;
+    transform-origin: 0px 7px;
     text-align: left;
     /* Different default on this lines*/
     border-right: 3px var(--tchmi-designer-control-selected-color) solid; /* End triangle */
@@ -182,7 +183,7 @@
     top: calc(100% - 7px); /* offset to center the box anchor */
     right: 50%;
     transform: rotate(-90deg);
-    transform-origin: right;
+    transform-origin: 100% 8px;
     text-align: left;
 }
 
@@ -227,7 +228,6 @@
 .tchmi-creator-distance-bottom.no-triangle {
     border-left: 0px var(--tchmi-designer-control-selected-color) solid; /* End triangle */
 }
-
 
 .tchmi-creator-snapline-top,
 .tchmi-creator-snapline-left,
@@ -295,7 +295,6 @@
     display: none;
 }
 
-
 /* ************************* Anchor container ************************* */
 .tchmi-creator-anchorcontainer {
     position: absolute;
@@ -304,9 +303,9 @@
     display: none;
 }
 
-    .tchmi-creator-anchorcontainer.tchmi-creator-control-selected {
-        display: block;
-    }
+.tchmi-creator-anchorcontainer.tchmi-creator-control-selected {
+    display: block;
+}
 
 .tchmi-creator-anchor-rect {
     position: absolute;
@@ -353,7 +352,8 @@
     height: 10px;
     background-color: var(--tchmi-designer-control-selected-secondary-color);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="10"> <rect stroke-width="1" style="stroke:rgb(25, 62, 237);fill:none;" x="0.5" y="4.5" width="7" height="5" /> <path stroke-width="1" style="stroke:rgb(25, 62, 237);fill:none;" d="M1.5,4.5 v-1 a2,2 90 1 1 5,0 v1" /> </svg>');
-    box-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color),0 0 4px var(--tchmi-designer-control-selected-secondary-color);
+    box-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color);
 }
 
 /** Lock icon for direct lock */
@@ -365,7 +365,8 @@
     width: 8px;
     height: 10px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="10"> <rect stroke-width="1" style="stroke:rgb(25, 62, 237);fill:rgb(25, 62, 237);" x="0.5" y="4.5" width="7" height="5" /> <path stroke-width="1" style="stroke:rgb(25, 62, 237);fill:none;" d="M1.5,4.5 v-1 a2,2 90 1 1 5,0 v1" /> </svg>');
-    box-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color),0 0 4px var(--tchmi-designer-control-selected-secondary-color);
+    box-shadow: 0 0 4px var(--tchmi-designer-control-selected-secondary-color),
+        0 0 4px var(--tchmi-designer-control-selected-secondary-color);
 }
 
 .tchmi-creator-control-locked .tchmi-creator-anchor-rect {
@@ -426,7 +427,6 @@
     cursor: ns-resize;
 }
 
-
 .tchmi-creator-anchor-bottom-right {
     bottom: -5px;
     right: -5px;
@@ -439,16 +439,39 @@
     overflow: hidden;
 }
 
-    .tchmi-creator-view-port-simulator[data-tchmi-creator-target-control-type="TcHmi.Controls.System.TcHmiView"] {
-        background-color: rgb(255, 255, 255);
-    }
+.tchmi-creator-view-port-simulator[data-tchmi-creator-target-control-type='TcHmi.Controls.System.TcHmiView'] {
+    background-color: rgb(255, 255, 255);
+}
 
 .tchmi-creator-view-port-highlighting {
     position: absolute;
 }
 
+.tchmi-creator-view-port-background {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
 .tchmi-creator-chessboard {
-    background-image: linear-gradient(45deg, var(--tchmi-designer-vs-theme-chessboard-light) 25%, transparent 25%,transparent 75%, var(--tchmi-designer-vs-theme-chessboard-light) 75%, var(--tchmi-designer-vs-theme-chessboard-light) 100%), linear-gradient(45deg, var(--tchmi-designer-vs-theme-chessboard-light) 25%, transparent 25%,transparent 75%, var(--tchmi-designer-vs-theme-chessboard-light) 75%, var(--tchmi-designer-vs-theme-chessboard-light) 100%);
+    background-image: linear-gradient(
+            45deg,
+            var(--tchmi-designer-vs-theme-chessboard-light) 25%,
+            transparent 25%,
+            transparent 75%,
+            var(--tchmi-designer-vs-theme-chessboard-light) 75%,
+            var(--tchmi-designer-vs-theme-chessboard-light) 100%
+        ),
+        linear-gradient(
+            45deg,
+            var(--tchmi-designer-vs-theme-chessboard-light) 25%,
+            transparent 25%,
+            transparent 75%,
+            var(--tchmi-designer-vs-theme-chessboard-light) 75%,
+            var(--tchmi-designer-vs-theme-chessboard-light) 100%
+        );
     background-size: 16px 16px;
     background-position: 0 0, 8px 8px;
     background-color: var(--tchmi-designer-vs-theme-chessboard-dark);
@@ -472,4 +495,22 @@
     z-index: 10000;
     border: 1px solid gray;
     pointer-events: none;
+}
+
+/** Main designer scrollbars should be aligned to VS theme */
+html.tchmi-visual-studio-dark {
+    color-scheme: dark;
+}
+/** Main designer scrollbars should be aligned to VS theme */
+html:not(.tchmi-visual-studio-dark) {
+    color-scheme: initial;
+}
+
+/** Other designer scrollbars should be aligned to application theme */
+html > * {
+    color-scheme: initial;
+}
+/** Other designer scrollbars should be aligned to application theme */
+html[tchmi-theme-name='Base-Dark'] > * {
+    color-scheme: dark;
 }

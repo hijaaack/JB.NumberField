@@ -1,7 +1,8 @@
 /** Styles for all themes */
 
 /* Style for the main element */
-.TcHmi_Controls_System_TcHmiControl, .tchmi-control {
+.TcHmi_Controls_System_TcHmiControl,
+.tchmi-control {
     position: absolute;
     /* Browser default is 3 px! */
     border-top-width: 0px;
@@ -11,7 +12,8 @@
 }
 
 /* Mark disabled controls without interupting control logic */
-.TcHmi_Controls_System_TcHmiControl-disabled::after, .tchmi-control-disabled::after {
+.TcHmi_Controls_System_TcHmiControl-disabled::after,
+.tchmi-control-disabled::after {
     content: '';
     position: absolute;
     top: 0px;
@@ -26,6 +28,7 @@
     This is no security fail. If an attacker got some stuff from the server he can manipulate the running script or DOM in the browser anyway.
     The real security has to be implemented in the server config.
 */
-.TcHmi_Controls_System_TcHmiControl-observe-disallowed, .tchmi-control-observe-disallowed {
+.TcHmi_Controls_System_TcHmiControl-observe-disallowed,
+.tchmi-control-observe-disallowed {
     display: none !important; /* Force this value to be valid and override style display definitions if available! */
 }

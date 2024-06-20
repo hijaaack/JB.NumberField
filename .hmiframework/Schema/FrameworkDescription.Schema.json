@@ -30,13 +30,7 @@
                     "minimum": 0
                 }
             },
-            "required": [
-                "full",
-                "major",
-                "minor",
-                "revision",
-                "build"
-            ]
+            "required": ["full", "major", "minor", "revision", "build"]
         },
         "dependencyFiles": {
             "type": "array",
@@ -45,15 +39,12 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Path to the file",
+                        "description": "Path to the file with the framework directory as base path.",
                         "minLength": 1
                     },
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "Stylesheet",
-                            "JavaScript"
-                        ],
+                        "enum": ["JavaScript"],
                         "description": "Type of the framework asset."
                     },
                     "description": {
@@ -61,11 +52,7 @@
                         "description": "A long description of this file."
                     }
                 },
-                "required": [
-                    "name",
-                    "type",
-                    "description"
-                ]
+                "required": ["name", "type", "description"]
             }
         },
         "events": {
@@ -89,9 +76,7 @@
                     },
                     "category": {
                         "type": "string",
-                        "enum": [
-                            "Framework"
-                        ],
+                        "enum": ["Framework"],
                         "description": ""
                     },
                     "allowsPreventDefault": {
@@ -99,11 +84,7 @@
                         "description": "The event can have the option preventDefault."
                     }
                 },
-                "required": [
-                    "name",
-                    "displayName",
-                    "description"
-                ]
+                "required": ["name", "displayName", "description"]
             }
         },
         "dataTypes": {
@@ -118,9 +99,7 @@
                         "description": "Path to the schema describing the datatype."
                     }
                 },
-                "required": [
-                    "schema"
-                ]
+                "required": ["schema"]
             }
         },
         "languages": {
@@ -144,10 +123,5 @@
             }
         }
     },
-    "required": [
-        "version",
-        "dependencyFiles",
-        "events",
-        "dataTypes"
-    ]
+    "required": ["version", "dependencyFiles", "events", "dataTypes"]
 }

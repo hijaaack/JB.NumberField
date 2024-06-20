@@ -49,7 +49,7 @@
                     },
                     "themedResources": {
                         "type": "object",
-                        "description": "List of general purpose themed resources for this control.",
+                        "description": "List of general purpose themed resources for this control. Will be available as '%tr%control::<fullCtrlTypeName>::<thisName>%/tr%",
                         "additionalProperties": {
                             "description": "Name of the general purpose themed resource for a control."
                         }

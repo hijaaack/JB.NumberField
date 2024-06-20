@@ -47,13 +47,8 @@
                     "minimum": 0
                 }
             },
-            "required": [
-                "full",
-                "major",
-                "minor",
-                "revision",
-                "build"
-            ]
+            "additionalProperties": false,
+            "required": ["full", "major", "minor", "revision", "build"]
         },
         "visible": {
             "type": "boolean",
@@ -62,11 +57,7 @@
         },
         "themeable": {
             "type": "string",
-            "enum": [
-                "None",
-                "Standard",
-                "Advanced"
-            ],
+            "enum": ["None", "Standard", "Advanced"],
             "default": "Standard",
             "description": "Determine if the control can be changed by a theme. Defaults to Standard. Controls with Advanced will be hidden by default in the theme editor."
         },
@@ -112,16 +103,13 @@
                             "minimum": 0
                         }
                     },
-                    "description": "Default size of control after instanciation in the engineering.",
-                    "required": [
-                        "width",
-                        "height"
-                    ]
+                    "description": "Default size of control after instantiation in the engineering.",
+                    "additionalProperties": false,
+                    "required": ["width", "height"]
                 }
             },
-            "required": [
-                "geometry"
-            ]
+            "additionalProperties": false,
+            "required": ["geometry"]
         },
         "icons": {
             "type": "array",
@@ -131,8 +119,8 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "pattern": "^(?!(\/Controls\/)).*$",
-                        "description": "Path to the file",
+                        "pattern": "^(?!(/Controls/)).*$",
+                        "description": "Path to the file with the control directory as base path.",
                         "minLength": 1
                     },
                     "width": {
@@ -146,11 +134,8 @@
                         "minimum": 0
                     }
                 },
-                "required": [
-                    "name",
-                    "width",
-                    "height"
-                ]
+                "additionalProperties": false,
+                "required": ["name", "width", "height"]
             }
         },
         "template": {
@@ -164,16 +149,13 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "pattern": "^(?!(\/Controls\/)|(.*THEMENAME)|(.*[.]ts$)).*$",
-                        "description": "Path to the file",
+                        "pattern": "^(?!(/Controls/)|(.*THEMENAME)|(.*[.]ts$)).*$",
+                        "description": "Path to the file with the control directory as base path.",
                         "minLength": 1
                     },
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "Stylesheet",
-                            "JavaScript"
-                        ],
+                        "enum": ["Stylesheet", "JavaScript"],
                         "description": "Type of the control asset."
                     },
                     "description": {
@@ -183,10 +165,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "type"
-                ]
+                "required": ["name", "type"]
             }
         },
         "themes": {
@@ -205,15 +184,12 @@
                                 "name": {
                                     "type": "string",
                                     "pattern": "^(?!.*THEMENAME).*$",
-                                    "description": "Path to the file",
+                                    "description": "Path to the file with the control directory as base path.",
                                     "minLength": 1
                                 },
                                 "type": {
                                     "type": "string",
-                                    "enum": [
-                                        "Stylesheet",
-                                        "ThemedValues"
-                                    ],
+                                    "enum": ["Stylesheet", "ThemedValues"],
                                     "description": "Type of the control asset."
                                 },
                                 "description": {
@@ -223,10 +199,7 @@
                                 }
                             },
                             "additionalProperties": false,
-                            "required": [
-                                "name",
-                                "type"
-                            ]
+                            "required": ["name", "type"]
                         }
                     }
                 }
@@ -280,11 +253,7 @@
                     },
                     "themeable": {
                         "type": "string",
-                        "enum": [
-                            "None",
-                            "Standard",
-                            "Advanced"
-                        ],
+                        "enum": ["None", "Standard", "Advanced"],
                         "default": "Standard",
                         "description": "Determine if the attribute can be changed by a theme. Defaults to Standard. Attributes with Advanced will be hidden by default in the theme editor."
                     },
@@ -329,10 +298,7 @@
                             },
                             "requiredWaitMode": {
                                 "type": "string",
-                                "enum": [
-                                    "Synchronous",
-                                    "Asynchronous"
-                                ]
+                                "enum": ["Synchronous", "Asynchronous"]
                             }
                         }
                     },
@@ -363,10 +329,7 @@
                     },
                     "defaultBindingMode": {
                         "type": "string",
-                        "enum": [
-                            "OneWay",
-                            "TwoWay"
-                        ],
+                        "enum": ["OneWay", "TwoWay"],
                         "description": "Defines which BindingMode is used as default for Bindings added to this attribute. This will be ignored if a BindingMode is defined in the symbol expression. Defaults to OneWay."
                     },
                     "heritable": {
@@ -377,7 +340,17 @@
                     "allowSymbolExpressionsInObject": {
                         "type": "boolean",
                         "default": false,
-                        "description": "Allows symbol expressions in properties of object or array values."
+                        "description": "Determines if the control has implemented support for symbol expressions in properties of object or array values for this attribute."
+                    },
+                    "allowEarlySymbolReferenceInjection": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Determines if the control has implemented support for injection of symbol references before initialization for this attribute."
+                    },
+                    "allowSymbolReferencePreloading": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Determines if the control has implemented support for delegation of symbol reference preloading for this attribute."
                     },
                     "defaultValue": {
                         "default": null,
@@ -389,13 +362,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "propertyName",
-                    "propertyGetterName",
-                    "type"
-                ]
+                "required": ["name", "displayName", "propertyName", "propertyGetterName", "type"]
             }
         },
         "themedResources": {
@@ -426,11 +393,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "type"
-                ]
+                "required": ["name", "displayName", "type"]
             }
         },
         "attributeCategories": {
@@ -458,10 +421,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayPriority"
-                ]
+                "required": ["name", "displayPriority"]
             }
         },
         "functions": {
@@ -469,114 +429,104 @@
             "description": "A list of API Functions of this Control.",
             "items": {
                 "type": "object",
-              "properties": {
-                "name": {
-                  "description": "Internal name of function.",
-                  "type": "string",
-                  "minLength": 1
-                },
-                "displayName": {
-                  "type": "string",
-                  "description": "Name which should be presented the user."
-                },
-                "visible": {
-                  "type": "boolean",
-                  "description": "Determine if a function is shown to the user."
-                },
-                "description": {
-                  "type": "string",
-                  "description": "A long description of this function."
-                },
-                "category": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "searchTerms": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "description": "A list of search terms/alias names for populating a search."
-                },
-                "params": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
+                "properties": {
+                    "name": {
+                        "description": "Internal name of function.",
                         "type": "string",
-                        "minLength": 1,
-                        "description": "Name of the parameter"
-                      },
-                      "displayName": {
+                        "minLength": 1
+                    },
+                    "displayName": {
                         "type": "string",
                         "description": "Name which should be presented the user."
-                      },
-                      "description": {
-                        "type": "string",
-                        "description": "A long description of this parameter."
-                      },
-                      "type": {
-                        "type": "string",
-                        "minLength": 6,
-                        "pattern": "^tchmi:",
-                        "description": "The type of the parameter gives the tchmi creator a hint to use a custom editor.\nThe corresponding schemas are described as dataTypes."
-                      },
-                      "bindable": {
-                        "type": "boolean",
-                        "description": "Defines if this is bindable to a Symbol.",
-                        "default": true
-                      },
-                      "visible": {
-                        "type": "boolean",
-                        "description": "Determine if a parameter is shown to the user."
-                      }
                     },
-                    "required": [
-                      "name",
-                      "displayName",
-                      "type",
-                      "visible"
-                    ]
-                  }
-                },
-                "type": {
-                  "description": "Datatype of return value.",
-                  "anyOf": [
-                    {
-                      "type": "string",
-                      "pattern": "^tchmi:",
-                      "minLength": 6
+                    "visible": {
+                        "type": "boolean",
+                        "description": "Determine if a function is shown to the user."
                     },
-                    {
-                      "type": "null"
+                    "description": {
+                        "type": "string",
+                        "description": "A long description of this function."
+                    },
+                    "category": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "searchTerms": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of search terms/alias names for populating a search."
+                    },
+                    "params": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "description": "Name of the parameter"
+                                },
+                                "displayName": {
+                                    "type": "string",
+                                    "description": "Name which should be presented the user."
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "A long description of this parameter."
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "minLength": 6,
+                                    "pattern": "^tchmi:",
+                                    "description": "Information about the expected type as a tchmi reference name. \nThe type of the parameter gives the tchmi creator a hint to use a custom editor."
+                                },
+                                "bindable": {
+                                    "type": "boolean",
+                                    "description": "Defines if this is bindable to a Symbol.",
+                                    "default": true
+                                },
+                                "visible": {
+                                    "type": "boolean",
+                                    "description": "Determine if a parameter is shown to the user."
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": ["name", "displayName", "type", "visible"]
+                        }
+                    },
+                    "type": {
+                        "description": "Datatype of return value.",
+                        "anyOf": [
+                            {
+                                "description": "Return value type as a tchmi reference name.",
+                                "type": "string",
+                                "pattern": "^tchmi:",
+                                "minLength": 6
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "heritable": {
+                        "type": "boolean",
+                        "description": "The function is also usable on inheritance childs."
+                    },
+                    "injectContextObject": {
+                        "type": "boolean",
+                        "description": "Adds a context object to the function as the first parameter."
+                    },
+                    "waitMode": {
+                        "type": "string",
+                        "default": "Synchronous",
+                        "enum": ["Synchronous", "Asynchronous"],
+                        "description": "Tells the system if the function is finished synchronous or if the user will call an feedback function in the context object of the context object to signal finish."
                     }
-                  ]
                 },
-                "heritable": {
-                  "type": "boolean",
-                  "description": "The function is also usable on inheritance childs."
-                },
-                "injectContextObject": {
-                  "type": "boolean",
-                  "description": "Adds a context object to the function as the first parameter."
-                },
-                "waitMode": {
-                  "type": "string",
-                  "default": "Synchronous",
-                  "enum": [ "Synchronous", "Asynchronous" ],
-                  "description": "Tells the system if the function is finished synchronous or if the user will call an feedback function in the context object of the context object to signal finish."
-                }
-              },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "visible",
-                    "category",
-                    "type",
-                    "heritable"
-                ]
+                "required": ["name", "displayName", "visible", "category", "type", "heritable"]
             }
         },
         "events": {
@@ -602,17 +552,13 @@
                         "anyOf": [
                             {
                                 "type": "string",
-                                "enum": [
-                                    "Operator",
-                                    "Control",
-                                    "Framework"
-                                ]
+                                "enum": ["Operator", "Control", "Framework"]
                             },
                             {
                                 "type": "string"
                             }
                         ],
-                        "description": "The category of this event. Used to sort and priorize the events in the creator."
+                        "description": "The category of this event. Used to sort and prioritize the events in the creator."
                     },
                     "displayPriority": {
                         "type": "integer",
@@ -635,13 +581,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "category",
-                    "visible",
-                    "heritable"
-                ]
+                "required": ["name", "displayName", "category", "visible", "heritable"]
             }
         },
         "dataTypes": {
@@ -653,14 +593,12 @@
                     "schema": {
                         "type": "string",
                         "minLength": 1,
-                        "pattern": "^(?!(\/Controls\/)).*$",
+                        "pattern": "^(?!(/Controls/)).*$",
                         "description": "Path to the schema describing the datatype."
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "schema"
-                ]
+                "required": ["schema"]
             }
         },
         "languages": {
@@ -685,7 +623,7 @@
         },
         "access": {
             "type": "array",
-            "description": "A list of access rights which is checked by this control.",
+            "description": "A list of access rights which is checked by this control. Will be checked by its child controls, too, if they are configured with a matching virtual mapping.",
             "items": {
                 "$schema": "http://json-schema.org/draft-04/schema",
                 "type": "object",
@@ -710,6 +648,14 @@
                         "default": "",
                         "description": "A long description of this access definition."
                     },
+                    "dependsOn": {
+                        "type": "array",
+                        "description": "Names of access rights which must be valid, if this right should be granted. For example 'create' should work only when 'operate' is granted.",
+                        "items": {
+                            "type": "string",
+                            "description": "Names of access rights which must be valid, if this right should be granted. For example 'create' should work only when 'operate' is granted."
+                        }
+                    },
                     "defaultValueInternal": {
                         "anyOf": [
                             {
@@ -724,12 +670,7 @@
                     }
                 },
                 "additionalProperties": false,
-                "required": [
-                    "name",
-                    "displayName",
-                    "visible",
-                    "defaultValueInternal"
-                ]
+                "required": ["name", "displayName", "visible", "defaultValueInternal"]
             }
         },
         "creator": {
@@ -768,13 +709,7 @@
                             }
                         },
                         "additionalProperties": false,
-                        "required": [
-                            "name",
-                            "type",
-                            "required",
-                            "defaultValue",
-                            "defaultValueInternal"
-                        ]
+                        "required": ["name", "type", "required", "defaultValue", "defaultValueInternal"]
                     }
                 }
             }

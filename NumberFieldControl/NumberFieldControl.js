@@ -70,15 +70,7 @@ var TcHmi;
                     $(this.__elementMinus).on('click', function () {
                         $this.__substractValue();
                     });
-                    $(this.__elementMinus).on('touchstart', function () {
-                        $this.__substractValue();
-                    });
                     $(this.__elementPlus).on('click', function () {
-                        //@ts-ignore
-                        // document.querySelector(".numberfield-plus-icon").getSVGDocument().getElementById("plus-solid-icon").setAttribute("fill", "red")
-                        $this.__addValue();
-                    });
-                    $(this.__elementPlus).on('touchstart', function () {
                         $this.__addValue();
                     });
                     /**
@@ -91,10 +83,8 @@ var TcHmi;
                 */
                 __detach() {
                     super.__detach();
-                    $(this.__elementMinus).off('mousedown');
-                    $(this.__elementMinus).off('touchstart');
-                    $(this.__elementPlus).off('mousedown');
-                    $(this.__elementPlus).off('touchstart');
+                    $(this.__elementMinus).off('click');
+                    $(this.__elementPlus).off('click');
                     /**
                      * Disable everything which is not needed while the control is not part of the active dom.
                      * No need to listen to events for example!
@@ -140,6 +130,7 @@ var TcHmi;
                     return this.__value;
                 }
                 __processValue() {
+                    var _a;
                     //check if the element is valid
                     if (!this.__elementValueP || !this.__elementTemplateRoot)
                         return;
@@ -152,9 +143,10 @@ var TcHmi;
                     if (this.__elementTemplateRoot[0].offsetParent != null && this.__elementTemplateRoot[0].offsetParent != undefined) {
                         // @ts-ignore
                         this.__symbolExpression = this.__elementTemplateRoot[0].offsetParent.dataset.tchmiValue;
-                        TcHmi.Symbol.writeEx(String(this.__symbolExpression), this.__value, function (callback) {
-                            //console.log(callback);
-                        });
+                        console.log(this.__symbolExpression);
+                        if ((_a = this.__symbolExpression) === null || _a === void 0 ? void 0 : _a.includes("%")) {
+                            TcHmi.Symbol.writeEx(String(this.__symbolExpression), this.__value);
+                        }
                     }
                     //Set disable class if needed
                     //Set class if needed
